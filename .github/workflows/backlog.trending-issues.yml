@@ -28,7 +28,7 @@ on:
 
 jobs:
   trending-issues:
-    uses: jeffhandley/github-actions/.github/workflows/trending-issues.yml@main
+    uses: jeffhandley/github-actions/.github/workflows/backlog.trending-issues.yml@main
     with:
       reactions: ${{ fromJson(inputs.reactions || 5) }}
       days:      ${{ fromJson(inputs.days      || 7) }}
