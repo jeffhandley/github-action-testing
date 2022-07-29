@@ -27,7 +27,7 @@ on:
         default: 'trending'
 
 jobs:
-  trending-issues:
+  backlog:
     uses: jeffhandley/github-actions/.github/workflows/backlog.trending-issues.yml@main
     with:
       reactions: ${{ fromJson(inputs.reactions || 5) }}

@@ -28,7 +28,7 @@ on:
         required: false
 
 jobs:
-  issue-triage:
+  areapods:
     uses: jeffhandley/github-actions/.github/workflows/areapods.issue-triage.yml@main
     with:
       issue:    ${{ fromJson(inputs.issue || github.event.issue.number)  }}
