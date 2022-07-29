@@ -1,0 +1,37 @@
+name: Area Pod Issue Triage
+
+permissions:
+  issues: write
+  pull-requests: write
+  repository-projects: write
+
+on:
+  issues:
+    types: [opened, closed, transferred, reopened, assigned, unassigned, labeled, unlabeled, milestoned, demilestoned]
+
+  workflow_dispatch:
+    inputs:
+      issue:
+        description: Issue number
+        required: true
+        type: number
+      action:
+        description: The event action to simulate
+        required: true
+        type: choice
+        options: [opened, closed, transferred, reopened, assigned, unassigned, labeled, unlabeled, milestoned, demilestoned]
+      assignee:
+        description: The assignee (assigned or unassigned)
+        required: false
+      label:
+        description: The label (labeled or unlabeled)
+        required: false
+
+jobs:
+  areapod-issuetriage:
+    uses: jeffhandley/github-actions/.github/workflows/areapod-issuetriage.yml@main
+    with:
+      issue:    ${{ fromJson(inputs.issue || github.event.issue.number)  }}
+      action:   ${{ inputs.action         || github.event.action         }}
+      assignee: ${{ inputs.assignee       || github.event.assignee.login }}
+      label:    ${{ inputs.label          || github.event.label.name     }}
