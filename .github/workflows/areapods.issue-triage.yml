@@ -1,4 +1,4 @@
-name: Area Pod Issue Triage
+name: "AreaPods: Issue Triage"
 
 permissions:
   issues: write
