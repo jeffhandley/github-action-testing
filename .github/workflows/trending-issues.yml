@@ -30,6 +30,6 @@ jobs:
   trending-issues:
     uses: jeffhandley/github-actions/.github/workflows/trending-issues.yml@main
     with:
-      reactions: ${{ Number(inputs.reactions) || 5          }}
-      days:      ${{ Number(inputs.days)      || 7          }}
-      label:     ${{ inputs.label             || 'trending' }}
+      reactions: ${{ (inputs.reactions && fromJson(inputs.reactions)) || 5          }}
+      days:      ${{ (inputs.days      && fromJson(inputs.days))      || 7          }}
+      label:     ${{ inputs.label                                     || 'trending' }}
