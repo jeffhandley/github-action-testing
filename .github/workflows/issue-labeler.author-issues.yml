@@ -1,0 +1,20 @@
+name: "Issue Labeler: Author Issues"
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  issue-labeler:
+    runs-on: ubuntu-latest
+
+    permissions:
+      issues: write
+
+    steps:
+      - name: author-issues
+        uses: jeffhandley/github-actions/actions/issue-labeler/authors@main
+        with:
+          issue:   ${{ github.event.issue.number }}
+          authors: 'jeffhandley eilon heng-liu'
+          label:   'team-member'
