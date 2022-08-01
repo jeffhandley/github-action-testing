@@ -14,6 +14,7 @@ on:
         description: The authors whose issues get labeled (separated by spaces)
         type: string
         required: true
+        default: jeffhandley eilon heng-liu
       label:
         description: The label to apply for the specified authors
         type: string
@@ -26,6 +27,6 @@ jobs:
 
     uses: jeffhandley/github-actions/.github/workflows/issue-labeler.authors.yml@main
     with:
-      issue:   ${{ inputs.issue   || github.event.issue.number }}
-      authors: ${{ inputs.authors || 'jeffhandley eilon heng-liu' }}
-      label:   ${{ inputs.label   || 'team-member' }}
+      issue:   ${{ fromJson(inputs.issue) || github.event.issue.number }}
+      authors: ${{ inputs.authors         || 'jeffhandley eilon heng-liu' }}
+      label:   ${{ inputs.label           || 'team-member' }}
