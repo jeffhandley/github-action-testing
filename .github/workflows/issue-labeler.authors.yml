@@ -26,7 +26,7 @@ jobs:
     permissions:
       issues: write
 
-    uses: jeffhandley/github-actions/.github/workflows/issue-labeler.authors.yml@main
+    uses: jeffhandley/github-actions/.github/workflows/issue-labeler.authors.yml@beta
     with:
       issue:   ${{ fromJson(inputs.issue) || github.event.issue.number }}
       authors: ${{ inputs.authors         || 'jeffhandley eilon heng-liu' }}

@@ -28,7 +28,7 @@ jobs:
       pull-requests: write
       repository-projects: write
 
-    uses: jeffhandley/github-actions/.github/workflows/areapods.issue-triage.yml@main
+    uses: jeffhandley/github-actions/.github/workflows/areapods.issue-triage.yml@beta
     with:
       issue:    ${{ fromJson(inputs.issue) || github.event.issue.number }}
       action:   ${{ inputs.action          || github.event.action }}
