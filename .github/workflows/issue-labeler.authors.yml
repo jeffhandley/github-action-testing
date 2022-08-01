@@ -19,6 +19,7 @@ on:
         description: The label to apply for the specified authors
         type: string
         required: true
+        default: team-member
 
 jobs:
   issue-labeler:
