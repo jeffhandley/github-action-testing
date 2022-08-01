@@ -11,23 +11,19 @@ on:
         required: true
         type: number
       authors:
-        description: The list of authors whose issues should get labeled (separated by spaces)
+        description: The authors whose issues get labeled (separated by spaces)
         required: true
       label:
-        description: The label to apply
+        description: The label to apply for the specified authors
         required: true
 
 jobs:
   issue-labeler:
-    runs-on: ubuntu-latest
-
     permissions:
       issues: write
 
-    steps:
-      - name: author-issues
-        uses: jeffhandley/github-actions/actions/issue-labeler/authors@main
-        with:
-          issue:   ${{ inputs.issue || github.event.issue.number }}
-          authors: ${{ inputs.authors || 'jeffhandley eilon heng-liu' }}
-          label:   ${{ inputs.label || 'team-member' }}
+    uses: jeffhandley/github-actions/.github/workflows/issue-labeler.authors.yml@main
+    with:
+      issue:   ${{ inputs.issue   || github.event.issue.number }}
+      authors: ${{ inputs.authors || 'jeffhandley eilon heng-liu' }}
+      label:   ${{ inputs.label   || 'team-member' }}
