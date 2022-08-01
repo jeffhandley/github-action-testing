@@ -1,4 +1,4 @@
-name: "Issue Labeler: Author Issues"
+name: "Issue Labeler: Authors"
 
 on:
   issues:
