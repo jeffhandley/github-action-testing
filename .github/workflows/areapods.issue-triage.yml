@@ -9,11 +9,29 @@ on:
   issues:
     types: [opened, closed, transferred, reopened, assigned, unassigned, labeled, unlabeled, milestoned, demilestoned]
 
+  workflow_dispatch:
+    inputs:
+      issue:
+        description: The issue number to process
+        required: true
+        type: number
+      action:
+        description: The event action to simulate
+        required: true
+        type: choice
+        options: [opened, closed, transferred, reopened, assigned, unassigned, labeled, unlabeled, milestoned, demilestoned]
+      assignee:
+        description: The assignee (assigned or unassigned)
+        required: false
+      label:
+        description: The label (labeled or unlabeled)
+        required: false
+
 jobs:
   areapods:
     uses: jeffhandley/github-actions/.github/workflows/areapods.issue-triage.yml@main
     with:
-      issue:    ${{ github.event.issue.number }}
-      action:   ${{ github.event.action }}
-      assignee: ${{ github.event.assignee.login }}
-      label:    ${{ github.event.label.name }}
+      issue:    ${{ fromJson(inputs.issue) || github.event.issue.number }}
+      action:   ${{ inputs.action || github.event.action }}
+      assignee: ${{ inputs.assignee || github.event.assignee.login }}
+      label:    ${{ inputs.label || github.event.label.name }}
