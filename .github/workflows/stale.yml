@@ -1,4 +1,4 @@
-name: 'Label and Close Stale Issues'
+name: 'Stale: Label and Close Issues'
 on:
   schedule:
     - cron: '19 12 * * 1' # Mondays at 12:19 UTC (uncommon minute of hour)
