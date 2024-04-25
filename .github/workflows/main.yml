@@ -1,0 +1,27 @@
+on:
+  pull_request:
+    types:
+      - reopened
+
+jobs:
+  label-bot-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Label Bot PRs
+        uses: actions/github-script@v5
+        with:
+          script: |
+            console.log('user', context.payload.pull_request.user);
+            const authorIsBot = context.payload.pull_request.user.type == 'Bot';
+
+            if (authorIsBot) {
+              const prNumber = context.payload.pull_request.number;
+              const labelToAdd = 'bot'; // Replace with your label name
+
+              await github.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                labels: [labelToAdd],
+              });
+            }
