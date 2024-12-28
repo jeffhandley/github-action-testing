@@ -12,7 +12,7 @@ jobs:
     if: ${{ github.event_name == 'issue' }}
     permissions:
       issues: write
-    uses: jeffhandley/github-ml-labeler/.github/workflows/labler-label-issue.yml@main
+    uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-label-issue.yml@main
     with:
       number: ${{ github.event.number }}
       label_prefix: "area-"
@@ -23,7 +23,7 @@ jobs:
     if: ${{ github.event_name == 'pull_request' }}
     permissions:
       pull-requests: write
-    uses: jeffhandley/github-ml-labeler/.github/workflows/labler-label-pull.yml@main
+    uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-label-pull.yml@main
     with:
       number: ${{ github.event.number }}
       label_prefix: "area-"
