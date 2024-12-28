@@ -14,7 +14,7 @@ jobs:
       issues: write
     uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-label-issue.yml@main
     with:
-      number: ${{ github.event.number }}
+      number: ${{ github.event.issue.number }}
       label_prefix: "area-"
       default_label: "no-area-predicted"
       model_repo: "dotnet/runtime"
@@ -25,7 +25,7 @@ jobs:
       pull-requests: write
     uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-label-pull.yml@main
     with:
-      number: ${{ github.event.number }}
+      number: ${{ github.event.pull_request.number }}
       label_prefix: "area-"
       default_label: "no-area-predicted"
       model_repo: "dotnet/runtime"
