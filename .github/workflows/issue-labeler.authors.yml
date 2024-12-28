@@ -1,8 +1,8 @@
 name: "Issue Labeler: Authors"
 
 on:
-  issues:
-    types: [opened]
+  # issues:
+  #   types: [opened]
 
   workflow_dispatch:
     inputs:

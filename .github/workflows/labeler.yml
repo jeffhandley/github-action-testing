@@ -10,22 +10,22 @@ on:
 jobs:
   label-issue:
     if: ${{ github.event_name == 'issue' }}
+    permissions:
+      issues: write
     uses: jeffhandley/github-ml-labeler/.github/workflows/labler-label-issue.yml@main
     with:
       number: ${{ github.event.number }}
       label_prefix: "area-"
       default_label: "no-area-predicted"
       model_repo: "dotnet/runtime"
-    permissions:
-      issues: write
 
   label-pull:
     if: ${{ github.event_name == 'pull_request' }}
+    permissions:
+      pull-requests: write
     uses: jeffhandley/github-ml-labeler/.github/workflows/labler-label-pull.yml@main
     with:
       number: ${{ github.event.number }}
       label_prefix: "area-"
       default_label: "no-area-predicted"
       model_repo: "dotnet/runtime"
-    permissions:
-      pull-requests: write

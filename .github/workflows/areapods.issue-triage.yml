@@ -1,8 +1,8 @@
 name: "AreaPods: Issue Triage"
 
 on:
-  issues:
-    types: [opened, closed, transferred, reopened, assigned, unassigned, labeled, unlabeled, milestoned, demilestoned]
+  # issues:
+  #   types: [opened, closed, transferred, reopened, assigned, unassigned, labeled, unlabeled, milestoned, demilestoned]
 
   workflow_dispatch:
     inputs:
