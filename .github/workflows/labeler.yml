@@ -9,7 +9,7 @@ on:
 
 jobs:
   label-issue:
-    if: ${{ github.event_name == 'issue' }}
+    if: ${{ github.event_name == 'issues' }}
     permissions:
       issues: write
     uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-label-issue.yml@main
