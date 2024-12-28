@@ -1,0 +1,31 @@
+name: "Labeler: Label Issue or Pull Request"
+
+on:
+  issues:
+    types: [opened, edited, transferred, unlabeled]
+
+  pull_request:
+    types: [opened, edited, synchronize, unlabeled]
+
+jobs:
+  label-issue:
+    if: ${{ github.event_name == 'issue' }}
+    uses: jeffhandley/github-ml-labeler/.github/workflows/labler-label-issue.yml@main
+    with:
+      number: ${{ github.event.number }}
+      label_prefix: "area-"
+      default_label: "no-area-predicted"
+      model_repo: "dotnet/runtime"
+    permissions:
+      issues: write
+
+  label-pull:
+    if: ${{ github.event_name == 'pull_request' }}
+    uses: jeffhandley/github-ml-labeler/.github/workflows/labler-label-pull.yml@main
+    with:
+      number: ${{ github.event.number }}
+      label_prefix: "area-"
+      default_label: "no-area-predicted"
+      model_repo: "dotnet/runtime"
+    permissions:
+      pull-requests: write
