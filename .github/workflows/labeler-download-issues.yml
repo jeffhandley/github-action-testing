@@ -29,8 +29,8 @@ jobs:
       issues: read
     uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-download-issues.yml@main
     with:
-      github_token: ${{ inputs.github_token || secrets.GITHUB_TOKEN }}
+      github_token: ${{ inputs.github_token || GITHUB_TOKEN }}
       org_repo: ${{ inputs.org_repo || github.repository }}
       label_prefix: ${{ inputs.label_prefix || 'area-' }}
       page_limit: ${{ fromJSON( inputs.page_limit || 500 )}}
-      retries: ${{ inputs.retries || "30,30,30,300,300,3600" }}
+      retries: ${{ inputs.retries || '30,30,30,300,300,3600' }}
