@@ -1,0 +1,20 @@
+name: "Labeler: Model Issues"
+
+on:
+  workflow_dispatch:
+    inputs:
+      data_repo:
+        description: "The org/repo to load issue data from (defaults to current repository)"
+        type: string
+      model_repo:
+        description: "The org/repo to cache the issue model for (defaults to current repository)"
+        type: string
+
+jobs:
+  model-issues:
+    runs-on: ubuntu-latest
+    timeout-minutes: 600
+    uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-model-issues.yml@main
+      with:
+        data_repo: ${{ inputs.data_repo || github.repository }}
+        model_repo: ${{ inputs.model_repo || github.repository }}

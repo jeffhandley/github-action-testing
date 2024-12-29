@@ -1,0 +1,33 @@
+name: "Labeler: Label Issue"
+
+on:
+  issues:
+    types: [opened, edited, transferred, unlabeled]
+
+  workflow_dispatch:
+    inputs:
+      number:
+        description: "Issue Number"
+        type: number
+        required: true
+      label_prefix:
+        description: "Label Prefix"
+        default: "area-"
+        required: true
+      default_label:
+        description: "Default Label (leave blank for no default label)"
+        default: "needs-area-label"
+      model_repo:
+        description: "The org/repo to use for the cached model (defaults to dotnet/runtime)"
+        type: string
+
+jobs:
+  label-issue:
+    permissions:
+      issues: write
+    uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-label-issue.yml@main
+    with:
+      number: ${{ fromJSON( inputs.number || github.event.issue.number ) }}
+      label_prefix: ${{ inputs.label_prefix || 'area-' }}
+      default_label: ${{ inputs.default_label || 'needs-area-label' }}
+      model_repo: ${{ inputs.model_repo || 'dotnet/runtime' }}
