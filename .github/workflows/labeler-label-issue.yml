@@ -38,4 +38,4 @@ jobs:
       label_prefix: ${{ inputs.label_prefix || 'area-' }}
       threshold: ${{ fromJSON( inputs.threshold || 0.75 ) }}
       default_label: ${{ inputs.default_label || 'needs-area-label' }}
-      model_repo: ${{ inputs.model_repo || 'dotnet/runtime' }}
+      model_repo: ${{ inputs.model_repo || github.repository }}
