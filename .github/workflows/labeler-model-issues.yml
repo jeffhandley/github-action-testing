@@ -12,9 +12,7 @@ on:
 
 jobs:
   model-issues:
-    runs-on: ubuntu-latest
-    timeout-minutes: 600
     uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-model-issues.yml@main
-      with:
-        data_repo: ${{ inputs.data_repo || github.repository }}
-        model_repo: ${{ inputs.model_repo || github.repository }}
+    with:
+      data_repo: ${{ inputs.data_repo || github.repository }}
+      model_repo: ${{ inputs.model_repo || github.repository }}
