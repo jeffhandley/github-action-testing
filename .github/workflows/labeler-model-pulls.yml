@@ -11,8 +11,8 @@ on:
         type: string
 
 jobs:
-  model-issues:
-    uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-model-issues.yml@main
+  model-pulls:
+    uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-model-pulls.yml@main
     with:
       data_repo: ${{ inputs.data_repo || github.repository }}
       model_repo: ${{ inputs.model_repo || github.repository }}
