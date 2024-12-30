@@ -27,6 +27,9 @@ on:
       model_repo:
         description: "The org/repo to use for the cached model (defaults to dotnet/runtime)"
         type: string
+      model_key:
+        description: "The optional key to use in the cache key suffix for loading the model"
+        type: string
 
 jobs:
   label-issue:
@@ -39,3 +42,4 @@ jobs:
       threshold: ${{ fromJSON( inputs.threshold || 0.75 ) }}
       default_label: ${{ inputs.default_label || 'needs-area-label' }}
       model_repo: ${{ inputs.model_repo || github.repository }}
+      model_key: ${{ inputs.model_key }}

@@ -6,8 +6,14 @@ on:
       data_repo:
         description: "The org/repo to load pull request data from (defaults to current repository)"
         type: string
+      data_key:
+        description: "The optional key to use in the cache key suffix for saving the downloaded data"
+        type: string
       model_repo:
         description: "The org/repo to cache the pull request model for (defaults to current repository)"
+        type: string
+      model_key:
+        description: "The optional key to use in the cache key suffix for loading the model"
         type: string
 
 jobs:
@@ -15,4 +21,6 @@ jobs:
     uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-model-pulls.yml@main
     with:
       data_repo: ${{ inputs.data_repo || github.repository }}
+      data_key: ${{ inputs.data_key }}
       model_repo: ${{ inputs.model_repo || github.repository }}
+      model_key: ${{ inputs.model_key }}
