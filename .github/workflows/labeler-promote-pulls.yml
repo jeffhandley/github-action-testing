@@ -7,16 +7,17 @@ on:
         description: "The cache key suffix to promote"
         type: string
         required: true
-
-env:
-  MODEL_PATH: labeler-cache/pull-model.zip
-  MODEL_CACHE_KEY: github-ml-labeler/pulls/model/${{ inputs.model_cache_key }}
-  PROMOTION_CACHE_KEY: github-ml-labeler/pulls/model/${{ inputs.repository || github.repository }}
+      backup_cache_key:
+        description: "The cache key suffix to use for backing up the currently promoted model"
+        type: string
+        required: true
+        default: "backup"
 
 jobs:
-  promote-pull-model:
+  promote-issue-model:
     permissions:
       actions: write
     uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-promote-pulls.yml@main
     with:
       model_cache_key: ${{ inputs.model_cache_key }}
+      backup_cache_key: ${{ inputs.backup_cache_key }}
