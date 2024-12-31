@@ -1,4 +1,4 @@
-name: "Labeler: Label Pull"
+name: "Labeler: Predict Pull Label"
 
 on:
   pull_request:
@@ -32,7 +32,7 @@ jobs:
   label-pull:
     permissions:
       pull-requests: write
-    uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-label-pull.yml@main
+    uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-predict-pull.yml@main
     with:
       number: ${{ fromJSON( inputs.number || github.event.number ) }}
       label_prefix: ${{ inputs.label_prefix || 'area-' }}
