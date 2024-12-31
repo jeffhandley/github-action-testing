@@ -2,7 +2,7 @@ name: "Labeler: Label Issue"
 
 on:
   issues:
-    types: [opened, edited, transferred, unlabeled]
+    types: [opened, edited, transferred]
 
   workflow_dispatch:
     inputs:
@@ -24,11 +24,8 @@ on:
         description: "Default Label (leave blank for no default label)"
         type: string
         default: "needs-area-label"
-      model_repo:
-        description: "The org/repo to use for the cached model (defaults to dotnet/runtime)"
-        type: string
-      model_key:
-        description: "The optional key to use in the cache key suffix for loading the model"
+      model_cache_key:
+        description: "The optional cache key suffix to use for saving the model (defaults to repository name)"
         type: string
 
 jobs:
@@ -41,5 +38,4 @@ jobs:
       label_prefix: ${{ inputs.label_prefix || 'area-' }}
       threshold: ${{ fromJSON( inputs.threshold || 0.75 ) }}
       default_label: ${{ inputs.default_label || 'needs-area-label' }}
-      model_repo: ${{ inputs.model_repo || github.repository }}
-      model_key: ${{ inputs.model_key }}
+      model_cache_key: ${{ inputs.model_cache_key || github.repository }}

@@ -3,24 +3,16 @@ name: "Labeler: Model Issues"
 on:
   workflow_dispatch:
     inputs:
-      data_repo:
-        description: "The org/repo to load issue data from (defaults to current repository)"
+      data_cache_key:
+        description: "The optional cache key suffix to use for loading the data (defaults to repository name)"
         type: string
-      data_key:
-        description: "The optional key to use in the cache key suffix for saving the downloaded data"
-        type: string
-      model_repo:
-        description: "The org/repo to cache the issue model for (defaults to current repository)"
-        type: string
-      model_key:
-        description: "The optional key to use in the cache key suffix for loading the model"
+      model_cache_key:
+        description: "The optional cache key suffix to use for saving the model (defaults to repository name)"
         type: string
 
 jobs:
   model-issues:
     uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-model-issues.yml@main
     with:
-      data_repo: ${{ inputs.data_repo || github.repository }}
-      data_key: ${{ inputs.data_key }}
-      model_repo: ${{ inputs.model_repo || github.repository }}
-      model_key: ${{ inputs.model_key }}
+      data_cache_key: ${{ inputs.data_cache_key || github.repository }}
+      model_cache_key: ${{ inputs.model_cache_key || github.repository }}
