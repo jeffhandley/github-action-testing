@@ -40,6 +40,8 @@ jobs:
   labeler-download-issues:
     permissions:
       issues: read
+      actions: write
+
     uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-download-issues.yml@main
     with:
       github_token: ${{ inputs.github_token || github.token }}
