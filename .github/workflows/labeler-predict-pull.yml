@@ -38,4 +38,4 @@ jobs:
       label_prefix: ${{ inputs.label_prefix || 'area-' }}
       threshold: ${{ fromJSON( inputs.threshold || 0.75 ) }}
       default_label: ${{ inputs.default_label || 'needs-area-label' }}
-      model_cache_key: ${{ inputs.model_cache_key || 'runtime:10000' || github.repository }}
+      model_cache_key: ${{ inputs.model_cache_key || github.repository }}

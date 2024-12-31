@@ -15,6 +15,9 @@ env:
 
 jobs:
   promote-pull-model:
+    permissions:
+      actions: write
+
     steps:
       - name: "Restore model from cache"
         uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-promote-pulls.yml@main
