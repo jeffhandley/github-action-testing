@@ -25,7 +25,7 @@ on:
         type: string
         default: "needs-area-label"
       model_cache_key:
-        description: "The optional cache key suffix to use for saving the model (defaults to repository name)"
+        description: "The optional cache key suffix to use for loading the model (defaults to repository name)"
         type: string
 
 jobs:
