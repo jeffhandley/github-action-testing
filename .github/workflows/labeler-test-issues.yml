@@ -24,10 +24,6 @@ on:
         type: number
         default: "0.75"
         required: true
-      default_label:
-        description: "Default Label (leave blank for no default label)"
-        type: string
-        default: "needs-area-label"
       model_cache_key:
         description: "The optional cache key suffix to use for loading the model (defaults to repository name)"
         type: string
@@ -41,5 +37,4 @@ jobs:
       issue_limit: ${{ fromJSON( inputs.issue_limit || 50000 ) }}
       label_prefix: ${{ inputs.label_prefix || 'area-' }}
       threshold: ${{ fromJSON( inputs.threshold || 0.75 ) }}
-      default_label: ${{ inputs.default_label || 'needs-area-label' }}
       model_cache_key: ${{ inputs.model_cache_key || github.repository }}
