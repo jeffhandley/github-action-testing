@@ -32,7 +32,7 @@ jobs:
   label-issue:
     permissions:
       issues: write
-    uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-predict-issue.yml@main
+    uses: jeffhandley/github-ml-labeler/.github/workflows/predict-issue.yml@main
     with:
       number: ${{ fromJSON( inputs.number || github.event.issue.number ) }}
       label_prefix: ${{ inputs.label_prefix || 'area-' }}

@@ -17,7 +17,7 @@ jobs:
   promote-issue-model:
     permissions:
       actions: write
-    uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-promote-issues.yml@main
+    uses: jeffhandley/github-ml-labeler/.github/workflows/promote-issues.yml@main
     with:
       model_cache_key: ${{ inputs.model_cache_key }}
       backup_cache_key: ${{ inputs.backup_cache_key }}

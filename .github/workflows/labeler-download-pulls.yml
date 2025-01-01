@@ -42,7 +42,7 @@ jobs:
       pull-requests: read
       actions: write
 
-    uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-download-pulls.yml@main
+    uses: jeffhandley/github-ml-labeler/.github/workflows/download-pulls.yml@main
     with:
       github_token: ${{ inputs.github_token || github.token }}
       repository: ${{ inputs.repository || github.repository }}

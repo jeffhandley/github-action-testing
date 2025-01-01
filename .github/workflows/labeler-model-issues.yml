@@ -15,7 +15,7 @@ jobs:
     permissions:
       actions: write
 
-    uses: jeffhandley/github-ml-labeler/.github/workflows/labeler-model-issues.yml@main
+    uses: jeffhandley/github-ml-labeler/.github/workflows/model-issues.yml@main
     with:
       data_cache_key: ${{ inputs.data_cache_key || github.repository }}
       model_cache_key: ${{ inputs.model_cache_key || github.repository }}
