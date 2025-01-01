@@ -29,7 +29,7 @@ on:
         type: string
 
 jobs:
-  label-issue:
+  predict-issue:
     permissions:
       issues: write
     uses: jeffhandley/github-ml-labeler/.github/workflows/predict-issue.yml@main
