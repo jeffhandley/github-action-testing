@@ -3,6 +3,12 @@ name: "Labeler: Test Pull Model"
 on:
   workflow_dispatch:
     inputs:
+      github_token:
+        description: "The GitHub token (defaults to action token)"
+        type: string
+      repository:
+        description: "The org/repo to download data from (defaults to current repository)"
+        type: string
       pull_limit:
         description: "Max number of items to include in the test"
         type: number
@@ -28,10 +34,10 @@ on:
 
 jobs:
   test-pulls:
-    permissions:
-      pulls: write
     uses: jeffhandley/github-ml-labeler/.github/workflows/test-pulls.yml@main
     with:
+      github_token: ${{ inputs.github_token || github.token }}
+      repository: ${{ inputs.repository || github.repository }}
       pull_limit: ${{ fromJSON( inputs.pull_limit || 50000 ) }}
       label_prefix: ${{ inputs.label_prefix || 'area-' }}
       threshold: ${{ fromJSON( inputs.threshold || 0.75 ) }}
