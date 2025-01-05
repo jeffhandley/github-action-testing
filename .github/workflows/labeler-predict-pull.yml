@@ -34,7 +34,7 @@ jobs:
       pull-requests: write
     uses: jeffhandley/github-ml-labeler/.github/workflows/predict-pull.yml@main
     with:
-      number: ${{ fromJSON( inputs.number || github.event.number ) }}
+      number: ${{ inputs.number || github.event.number }}
       label_prefix: ${{ inputs.label_prefix || 'area-' }}
       threshold: ${{ fromJSON( inputs.threshold || 0.40 ) }}
       default_label: ${{ inputs.default_label || 'needs-area-label' }}
