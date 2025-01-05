@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
     inputs:
       number:
-        description: "Pull Request Number"
-        type: number
+        description: "Pull Request Number(s)"
+        type: string
         required: true
       label_prefix:
         description: "Label Prefix"
