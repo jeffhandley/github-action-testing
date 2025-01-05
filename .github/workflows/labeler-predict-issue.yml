@@ -18,7 +18,7 @@ on:
       threshold:
         description: "The minimum confidence score for a label prediction"
         type: number
-        default: "0.75"
+        default: "0.40"
         required: true
       default_label:
         description: "Default Label (leave blank for no default label)"
@@ -36,6 +36,6 @@ jobs:
     with:
       number: ${{ fromJSON( inputs.number || github.event.issue.number ) }}
       label_prefix: ${{ inputs.label_prefix || 'area-' }}
-      threshold: ${{ fromJSON( inputs.threshold || 0.75 ) }}
+      threshold: ${{ fromJSON( inputs.threshold || 0.40 ) }}
       default_label: ${{ inputs.default_label || 'needs-area-label' }}
       model_cache_key: ${{ inputs.model_cache_key || github.repository }}

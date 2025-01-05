@@ -22,7 +22,7 @@ on:
       threshold:
         description: "The minimum confidence score for a label prediction"
         type: number
-        default: "0.75"
+        default: "0.40"
         required: true
       model_cache_key:
         description: "The optional cache key suffix to use for loading the model (defaults to repository name)"
@@ -36,5 +36,5 @@ jobs:
       repository: ${{ inputs.repository || github.repository }}
       issue_limit: ${{ fromJSON( inputs.issue_limit || 50000 ) }}
       label_prefix: ${{ inputs.label_prefix || 'area-' }}
-      threshold: ${{ fromJSON( inputs.threshold || 0.75 ) }}
+      threshold: ${{ fromJSON( inputs.threshold || 0.40 ) }}
       model_cache_key: ${{ inputs.model_cache_key || github.repository }}
