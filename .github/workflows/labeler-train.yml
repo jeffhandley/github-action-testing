@@ -22,6 +22,10 @@ on:
         description: "Pulls: Test Model"
         type: boolean
 
+      data_limit:
+        description: "Max number of items to include in the model"
+        type: number
+
       github_token:
         description: "The GitHub token (defaults to action token)"
         type: string
@@ -44,6 +48,7 @@ jobs:
       github_token: ${{ inputs.github_token || github.token }}
       repository: ${{ inputs.repository || github.repository }}
       data_cache_key: ${{ inputs.cache_key_suffix }}
+      issue_limit: ${{ fromJSON(inputs.data_limit) }}
       label_prefix: 'area-'
 
   labeler-train-issues:
@@ -77,6 +82,7 @@ jobs:
       github_token: ${{ inputs.github_token || github.token }}
       repository: ${{ inputs.repository || github.repository }}
       data_cache_key: ${{ inputs.cache_key_suffix }}
+      pull_limit: ${{ fromJSON(inputs.data_limit) }}
       label_prefix: 'area-'
 
   labeler-train-pulls:
