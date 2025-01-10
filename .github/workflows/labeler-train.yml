@@ -4,22 +4,22 @@ on:
   workflow_dispatch:
     inputs:
       download_issues:
-        description: "Download Issue Data"
+        description: "Issues: Download Data"
         type: boolean
       train_issues:
-        description: "Train Issues Model"
+        description: "Issues: Train Model"
         type: boolean
       test_issues:
-        description: "Test Issues Model"
+        description: "Issues: Test Model"
         type: boolean
       download_pulls:
-        description: "Download Pull Data"
+        description: "Pulls: Download Data"
         type: boolean
       train_pulls:
-        description: "Train Pulls Model"
+        description: "Pulls: Train Model"
         type: boolean
       test_pulls:
-        description: "Test Pulls Model"
+        description: "Pulls: Test Model"
         type: boolean
 
       github_token:
