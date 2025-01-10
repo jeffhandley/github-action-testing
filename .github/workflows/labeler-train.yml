@@ -4,23 +4,31 @@ on:
   workflow_dispatch:
     inputs:
       download_issues:
-        description: "Download Issue Data"
+        description: "Issues: Download Data"
         type: boolean
       train_issues:
-        description: "Train Issues Model"
+        description: "Issues: Train Model"
         type: boolean
       test_issues:
-        description: "Test Issues Model"
+        description: "Issues: Test Model"
         type: boolean
       download_pulls:
-        description: "Download Pull Data"
+        description: "Pulls: Download Data"
         type: boolean
       train_pulls:
-        description: "Train Pulls Model"
+        description: "Pulls: Train Model"
         type: boolean
       test_pulls:
-        description: "Test Pulls Model"
+        description: "Pulls: Test Model"
         type: boolean
+
+      issue_limit:
+        description: "Max issue count to download and test"
+        type: number
+
+      pull_limit:
+        description: "Max pull request count to download and test"
+        type: number
 
       github_token:
         description: "The GitHub token (defaults to action token)"
@@ -44,6 +52,7 @@ jobs:
       github_token: ${{ inputs.github_token || github.token }}
       repository: ${{ inputs.repository || github.repository }}
       data_cache_key: ${{ inputs.cache_key_suffix }}
+      issue_limit: ${{ inputs.issue_limit }}
       label_prefix: 'area-'
 
   labeler-train-issues:
@@ -64,6 +73,7 @@ jobs:
       github_token: ${{ github.token }}
       repository: ${{ inputs.repository || github.repository }}
       model_cache_key: ${{ inputs.cache_key_suffix || github.repository }}
+      issue_limit: ${{ inputs.issue_limit }}
       label_prefix: 'area-'
       threshold: 0.40
 
@@ -77,6 +87,7 @@ jobs:
       github_token: ${{ inputs.github_token || github.token }}
       repository: ${{ inputs.repository || github.repository }}
       data_cache_key: ${{ inputs.cache_key_suffix }}
+      pull_limit: ${{ inputs.pull_limit }}
       label_prefix: 'area-'
 
   labeler-train-pulls:
@@ -97,5 +108,6 @@ jobs:
       github_token: ${{ github.token }}
       repository: ${{ inputs.repository || github.repository }}
       model_cache_key: ${{ inputs.cache_key_suffix || github.repository }}
+      pull_limit: ${{ inputs.pull_limit }}
       label_prefix: 'area-'
       threshold: 0.40
