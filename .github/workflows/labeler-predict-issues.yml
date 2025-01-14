@@ -19,6 +19,7 @@ jobs:
   predict-issues:
     # Skip execution if running in a fork
     if: ${{ github.repository == 'jeffhandley/github-action-testing' && (inputs.issue_numbers || github.event.issue.number) }}
+
     permissions:
       issues: write
     uses: jeffhandley/github-ml-labeler/.github/workflows/predict-issues.yml@main

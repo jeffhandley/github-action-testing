@@ -27,7 +27,9 @@ on:
 
 jobs:
   predict-pulls:
+    # Skip execution if running in a fork
     if: ${{ github.repository == 'jeffhandley/github-action-testing' && (inputs.pull_numbers || github.event.number) }}
+
     permissions:
       pull-requests: write
     uses: jeffhandley/github-ml-labeler/.github/workflows/predict-pulls.yml@main
